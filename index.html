@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E6E6FA;--card:#fbfaff;--ink:#2b2352;--mute:#5f5a8a;--line:#cdc6ee;--accent:#6A5ACD;--accent-ink:#fff;--plum:#DDA0DD;--neg:#d63a58;--gold:#f59e0b;--gold-bg:#fff1c2;--goldtext:#7a4a00;--xp:#1fb87f;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -165,7 +166,7 @@ h2{font-size:15px;font-weight:600;color:var(--mute);margin:20px 0 8px}
 #toast.on{opacity:1}
 .fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:15;font:inherit;font-weight:700;font-size:15px;border:0;border-radius:999px;padding:12px 18px;background:var(--accent);color:var(--accent-ink);box-shadow:0 4px 14px rgba(42,33,82,.3);cursor:pointer}
 .fab[aria-pressed=true]{background:var(--plum);color:#3b1f5c}
-body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
+body:not(.editing) :is(.edit,.del,.drag){display:none}
 .pw{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--mute)}
 .pbar{flex:1;min-width:70px;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
 .pbar i{display:block;height:100%;background:var(--xp);border-radius:99px;transition:width .3s}
@@ -205,6 +206,7 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
       <div id="wList"></div>
       <h2 id="gotH">已兑换</h2>
       <ul id="gList"></ul>
+      <div class="foot" id="gFoot"><button id="gClear">清空已兑换</button></div>
     </div>
   </section>
   <div class="tabs" id="tabs">
@@ -233,7 +235,7 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
       <button id="tAdd">添加</button>
     </div>
     <div id="tList"></div>
-    <div class="foot"><button id="clear">清除已完成</button></div>
+    <div class="foot"><button id="clear">清空已完成</button></div>
   </section>
   <section id="pen" hidden>
     <p class="note">没忍住、冲动之后，给自己安排一次修行：写下发生了什么，再定一件要做的事。修行没解除之前，心愿单暂时不能兑换。「完成解除」做完就解除；「到期解除」到了设定的时间（精确到分钟）自动解除。</p>
@@ -249,7 +251,7 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
       <button id="pAdd">添加</button>
     </div>
     <div id="pList"></div>
-    <div class="foot"><button id="pClear">清除已完成</button></div>
+    <div class="foot"><button id="pClear">清空已完成</button></div>
   </section>
   <div class="foot" style="margin-top:28px;gap:18px"><button id="bkBtn">备份与恢复</button><button id="reset">清空所有数据</button></div>
   <div id="bk" class="bk" hidden>
@@ -506,7 +508,7 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
       });
       wl.appendChild(ul);
     }
-    $("clear").style.visibility=S.tasks.some(function(t){return inView(t)&&t.done&&!isHab(t)})?"visible":"hidden";
+    $("clear").style.visibility=S.tasks.some(function(t){return inView(t)&&t.done})?"visible":"hidden";
   }
 
   function normPen(t){if(/^\d{4}-\d{2}-\d{2}$/.test(String(t.due||"")))t.due+="T04:00";
@@ -564,7 +566,7 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
     if(aff.length){var w=aff[0];box.textContent=w.name+(aff.length>1?" 等 "+aff.length+" 个心愿":"")+" 可以兑换了"+(lock?"（修行未完成，暂时锁定）":"");return}
     var nx=open.slice().sort(function(a,b){return a.cost-b.cost})[0];
     box.appendChild(document.createTextNode(nx.name+" · 还差 "+(nx.cost-S.bal)+" 币"));
-    var bar=el("div","bar"),k=el("i");k.style.width=Math.min(100,S.bal/nx.cost*100)+"%";bar.appendChild(k);box.appendChild(bar)}
+    }
   function renderWishes(){
     var wl=$("wList"),gl=$("gList");wl.innerHTML="";gl.innerHTML="";
     var open=S.wishes.filter(function(w){return!w.got}), got=S.wishes.filter(function(w){return w.got}), lock=penLeft()>0;
@@ -583,17 +585,16 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
         var d=el("button","del","×");d.setAttribute("aria-label","删除心愿");
         d.onclick=function(){S.wishes=S.wishes.filter(function(x){return x!==w});save();render()};
         r.append(el("span","text",w.name),ptsPill(w.cost),b,mkEdit("编辑心愿",function(){editWish(w)}),d);
-        var bar=el("div","bar"),k=el("i");k.style.width=Math.min(100,S.bal/w.cost*100)+"%";bar.appendChild(k);
         if(w.rep){
           var mr=el("div","row"),mt=el("span","meta","固定 · 已兑换 "+(w.times||0)+" 次");mt.style.flex="1";mr.appendChild(mt);
           if(w.times>0){var ud=el("button","undo","撤销一次");ud.onclick=function(){w.times--;S.bal+=w.cost;logAdd("unredeem",w.name,w.cost);save();render()};mr.appendChild(ud)}
-          li.append(r,mr,bar)
-        }else li.append(r,bar);
+          li.append(r,mr)
+        }else li.append(r);
         ul.appendChild(li);
       });
       wl.appendChild(ul);
     });
-    $("gotH").hidden=gl.hidden=!got.length;
+    $("gotH").hidden=gl.hidden=!got.length;$("gFoot").style.display=got.length?"":"none";
     got.forEach(function(w){
       var li=el("li","done"),u=el("button","undo","撤销");
       u.onclick=function(){w.got=false;S.bal+=w.cost;logAdd("unredeem",w.name,w.cost);save();render()};
@@ -627,13 +628,19 @@ body:not(.editing) :is(.edit,.del,.drag,#clear,#pClear){display:none}
     else{var g=parseInt($("pGoal").value,10);t.goal=g>0?Math.min(g,999):0;t.cur=0}
     S.pen.unshift(t);$("pIn").value="";$("pWhy").value="";$("pGoal").value="";save();render();$("pIn").focus()}
   $("pAdd").onclick=addPen;$("pIn").addEventListener("keydown",function(e){if(e.key==="Enter")addPen()});
-  $("pClear").onclick=function(){S.pen=S.pen.filter(function(t){return!penOk(t)});save();render()};
+  $("pClear").onclick=function(){var n=S.pen.filter(penOk).length;if(!n)return;
+    armClear(this,"清空已完成",n,function(){S.pen=S.pen.filter(function(t){return!penOk(t)});save();render()})};
   $("editBtn").onclick=function(){var on=!document.body.classList.contains("editing");document.body.classList.toggle("editing",on);this.setAttribute("aria-pressed",on?"true":"false");this.textContent=on?"✓ 完成编辑":"✎ 编辑"};
   syncPen();
   $("tAdd").onclick=addTask;$("wAdd").onclick=addWish;
   $("tIn").addEventListener("keydown",function(e){if(e.key==="Enter")addTask()});
   $("wIn").addEventListener("keydown",function(e){if(e.key==="Enter")addWish()});
-  $("clear").onclick=function(){S.tasks=S.tasks.filter(function(t){return!(inView(t)&&t.done&&!isHab(t))});save();render()};
+  function armClear(b,label,n,fn){if(!b.dataset.arm){b.dataset.arm="1";b.textContent="再点一次确认（清掉 "+n+" 项）";clearTimeout(b._t);b._t=setTimeout(function(){delete b.dataset.arm;b.textContent=label},3000);return}
+    clearTimeout(b._t);delete b.dataset.arm;b.textContent=label;fn()}
+  $("clear").onclick=function(){var n=S.tasks.filter(function(t){return inView(t)&&t.done}).length;if(!n)return;
+    armClear(this,"清空已完成",n,function(){S.tasks=S.tasks.filter(function(t){return!(inView(t)&&t.done)});save();render()})};
+  $("gClear").onclick=function(){var n=S.wishes.filter(function(w){return w.got}).length;if(!n)return;
+    armClear(this,"清空已兑换",n,function(){S.wishes=S.wishes.filter(function(w){return!w.got});save();render()})};
   $("tabs").addEventListener("click",function(e){
     var b=e.target.closest("button");if(!b)return;
     document.querySelectorAll("#tabs button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
