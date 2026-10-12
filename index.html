@@ -19,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E6E6FA;--card:#fbfaff;--ink:#2b2352;--mute:#5f5a8a;--line:#cdc6ee;--accent:#6A5ACD;--accent-ink:#fff;--plum:#DDA0DD;--neg:#d63a58;--gold:#f59e0b;--gold-bg:#fff1c2;--goldtext:#7a4a00;--xp:#1fb87f;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -93,6 +94,16 @@ li.q3{box-shadow:inset 4px 0 0 #FF6B8A}
 .strow .nm em{font-style:normal;font-size:12px;color:var(--mute);margin-left:6px}
 .strow .am{flex:none;display:inline-flex;align-items:center;gap:4px;font-weight:700}
 .strow .am .coin{width:14px;height:14px}
+.ckhead{display:flex;align-items:center;justify-content:space-between}
+.ckrow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}
+.ckrow:last-child{border-bottom:0}
+.ckmain{flex:1;min-width:0}
+.ckmain .nm{display:block;font-size:15px;overflow-wrap:anywhere}
+.ckseg{display:flex;gap:6px;flex:none}
+.ckb{font:inherit;font-size:14px;font-weight:600;padding:7px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--mute);cursor:pointer}
+.ckb.ok.on{background:var(--xp);border-color:var(--xp);color:#0d2b24}
+.ckb.no.on{background:var(--neg);border-color:var(--neg);color:#fff}
+.ckmg{border:0;background:transparent;color:var(--mute);font-size:18px;line-height:1;cursor:pointer;padding:4px 8px}
 .stnote{color:var(--mute);font-size:13px;margin:0;text-align:center}
 .stbody{display:flex;flex-direction:column;gap:12px}
 .edrow button{padding:10px 18px}
@@ -281,7 +292,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   if(!S||!Array.isArray(S.tasks)||!Array.isArray(S.wishes)||typeof S.bal!=="number")S={tasks:[],wishes:[],bal:0,xp:{}};
   if(!S.xp||typeof S.xp!=="object")S.xp={};
   if(!Array.isArray(S.pen))S.pen=[];S.pen.forEach(normPen);
-  if(!Array.isArray(S.log))S.log=[];if(Array.isArray(S.wishes))migW(S.wishes);pruneLog();
+  if(!Array.isArray(S.log))S.log=[];if(!Array.isArray(S.checks))S.checks=[];if(!S.ck||typeof S.ck!=="object"||!S.ck.r)S.ck={day:"",r:{}};if(Array.isArray(S.wishes))migW(S.wishes);pruneLog();
   S.tasks.forEach(norm);
   function pkey(p){var d=new Date(),y=d.getFullYear(),m=d.getMonth(),dd=d.getDate();
     function z(n){return n<10?"0"+n:""+n}
@@ -653,11 +664,51 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   function z2(n){return n<10?"0"+n:""+n}
   function coinAmt(d){var a=el("span","am"+(d>0?" pos":d<0?" neg":""));a.appendChild(el("i","coin"));a.appendChild(document.createTextNode((d>0?"+":"")+d));return a}
   function stRow(e){
-    var r=el("div","strow"),dt=new Date(e.ts),nm=el("span","nm",e.n),tag={undone:"撤销完成",unredeem:"撤销兑换",pen:"修行完成",penundo:"取消修行完成"}[e.k];
+    var r=el("div","strow"),dt=new Date(e.ts),nm=el("span","nm",e.n),tag={undone:"撤销完成",unredeem:"撤销兑换",pen:"修行完成",penundo:"取消修行完成",ckok:"达成",ckno:"未达成",ckundo:"撤回打卡"}[e.k];
     if(tag)nm.appendChild(el("em",null,tag));
     r.append(el("span","tm",z2(dt.getHours())+":"+z2(dt.getMinutes())),nm);
-    if(e.d!==0)r.appendChild(coinAmt(e.d));else r.appendChild(el("span","am",e.k==="pen"||e.k==="penundo"?"无金币":"0"));
+    if(e.d!==0)r.appendChild(coinAmt(e.d));else r.appendChild(el("span","am",e.k==="pen"||e.k==="penundo"||e.k==="ckok"||e.k==="ckno"||e.k==="ckundo"?"无金币":"0"));
     return r}
+  var ckMg=false;
+  function dayKey(){var d=logDay0();return d.getFullYear()+"-"+z2(d.getMonth()+1)+"-"+z2(d.getDate())}
+  function ckRoll(){var k=dayKey();if(!S.ck||S.ck.day!==k)S.ck={day:k,r:{}}}
+  function ckFields(c){var nums=function(cur,zero,pre){var o=[0,1,2,3,5,8,10,15,20,30],v=Math.max(0,Math.floor(+cur)||0);if(o.indexOf(v)<0){o.push(v);o.sort(function(a,b){return a-b})}
+      return o.map(function(n){return[String(n),n===0?zero:pre+n+" 币"]})};
+    return[{key:"name",label:"打卡项（问自己的话）",type:"text",value:c.name,max:30},
+      {key:"win",label:"达成时",type:"select",value:String(c.win),options:nums(c.win,"没有奖励","+")},
+      {key:"lose",label:"未达成时",type:"select",value:String(c.lose),options:nums(c.lose,"不扣金币","扣 ")},
+      {key:"pt",label:"未达成时自动添加一条自我修行（可不填）",type:"text",value:c.pt||"",max:60}]}
+  function ckSave(c,v){var n=v.name.trim();if(!n){toast("请写打卡项");return false}c.name=n;c.win=parseInt(v.win,10)||0;c.lose=parseInt(v.lose,10)||0;c.pt=v.pt.trim();save();showSettle()}
+  function ckAdd(preset){var c=preset||{name:"",win:2,lose:1,pt:""};
+    if(preset){S.checks.push({id:Date.now()+S.checks.length,name:c.name,win:c.win,lose:c.lose,pt:c.pt});save();showSettle();return}
+    openEdit("添加打卡项",ckFields(c),function(v){var o={id:Date.now(),name:"",win:0,lose:0,pt:""};if(ckSave(o,v)===false)return false;S.checks.push(o);save();showSettle()})}
+  function ckSet(c,v){ckRoll();var cur=S.ck.r[c.id];
+    if(cur){if(cur.d>0&&S.bal-cur.d<0){toast("这些金币已用于兑换，先撤销兑换再修改");return}
+      S.bal-=cur.d;logAdd("ckundo",c.name,-cur.d);if(cur.pid)S.pen=S.pen.filter(function(x){return x.id!==cur.pid});delete S.ck.r[c.id];
+      if(cur.v===v){save();render();showSettle();return}}
+    var rec={v:v,d:0,pid:null},msg;
+    if(v==="ok"){rec.d=c.win;msg="达成："+(c.win?"+"+c.win+" 金币":"继续保持")}
+    else{rec.d=-Math.min(c.lose,S.bal);msg="未达成"+(rec.d?"：扣 "+(-rec.d)+" 金币":"");
+      if(c.pt){rec.pid=Date.now()+Math.floor(Math.random()*1000);S.pen.unshift({id:rec.pid,text:c.pt,why:c.name+" 未达成",done:false,mode:"done",goal:0,cur:0});msg+="，已添加一条自我修行"}}
+    S.bal+=rec.d;logAdd(v==="ok"?"ckok":"ckno",c.name,rec.d);S.ck.r[c.id]=rec;save();render();showSettle();toast(msg)}
+  function ckSection(body){ckRoll();
+    var head=el("div","ckhead");head.appendChild(el("p","stsec","每日打卡"));
+    var mg=el("button","undo",ckMg?"完成管理":"管理");mg.type="button";mg.onclick=function(){ckMg=!ckMg;showSettle()};head.appendChild(mg);body.appendChild(head);
+    var box=el("div");
+    if(!S.checks.length){box.appendChild(el("p","stnote","还没有打卡项。每天自己选「达成 / 未达成」，按结果给奖惩。"));
+      var pr=el("div","ckseg");pr.style.justifyContent="center";pr.style.margin="8px 0";
+      [["今天早睡了吗",2,1],["今天早起了吗",2,1]].forEach(function(x){var b=el("button","ckb","＋ "+x[0]);b.type="button";b.onclick=function(){ckAdd({name:x[0],win:x[1],lose:x[2],pt:""})};pr.appendChild(b)});box.appendChild(pr)}
+    S.checks.forEach(function(c){
+      var r=S.ck.r[c.id],row=el("div","ckrow"),main=el("div","ckmain");main.appendChild(el("span","nm",c.name));
+      main.appendChild(el("em","hint","达成 "+(c.win?"+"+c.win:"无奖励")+" · 未达成 "+(c.lose?"−"+c.lose:"不扣")+(c.pt?" · 加修行":"")));row.appendChild(main);
+      var seg=el("div","ckseg");
+      if(ckMg){var ed=el("button","ckmg","✎"),dl=el("button","ckmg","×");ed.type=dl.type="button";ed.setAttribute("aria-label","编辑打卡项");dl.setAttribute("aria-label","删除打卡项");
+        ed.onclick=function(){openEdit("编辑打卡项",ckFields(c),function(v){return ckSave(c,v)})};
+        dl.onclick=function(){S.checks=S.checks.filter(function(x){return x!==c});save();showSettle()};seg.append(ed,dl)}
+      else[["ok","达成"],["no","未达成"]].forEach(function(x){var b=el("button","ckb "+x[0]+(r&&r.v===x[0]?" on":""),x[1]);b.type="button";b.setAttribute("aria-pressed",r&&r.v===x[0]?"true":"false");b.onclick=function(){ckSet(c,x[0])};seg.appendChild(b)});
+      row.appendChild(seg);box.appendChild(row)});
+    body.appendChild(box);
+    if(ckMg){var ad=el("button","ckb","＋ 添加打卡项");ad.type="button";ad.style.alignSelf="flex-start";ad.onclick=function(){ckAdd()};body.appendChild(ad)}}
   function showSettle(){
     pruneLog();
     var sh=$("stSheet");sh.innerHTML="";
@@ -670,16 +721,17 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     [["获得",gain,gain>0?"pos":""],["花费",spend,spend<0?"neg":""],["净增减",gain+spend,gain+spend>0?"pos":gain+spend<0?"neg":""],["期末金币",S.bal,""]].forEach(function(x){
       var t=el("div","tile");t.appendChild(el("span",null,x[0]));var b=el("b",x[2]);b.appendChild(el("i","coin"));
       b.appendChild(document.createTextNode(x[0]==="期末金币"?x[1]:(x[1]>0?"+":"")+x[1]));t.appendChild(b);tiles.appendChild(t)});
-    var body=el("div","stbody");body.appendChild(tiles);
+    var body=el("div","stbody");body.appendChild(tiles);ckSection(body);
     var tasks=ents.filter(function(e){return e.k==="done"||e.k==="undone"||e.k==="pen"||e.k==="penundo"}),wishes=ents.filter(function(e){return e.k==="redeem"||e.k==="unredeem"});
     function sec(title,list,none){body.appendChild(el("p","stsec",title+(list.length?" · "+list.length:"")));
       var box=el("div");if(!list.length)box.appendChild(el("p","stnote",none));list.forEach(function(e){box.appendChild(stRow(e))});body.appendChild(box)}
     sec("完成的任务",tasks,"今天还没有完成任务");sec("兑换的心愿",wishes,"今天还没有兑换心愿");
+    var cks=ents.filter(function(e){return e.k==="ckok"||e.k==="ckno"||e.k==="ckundo"});if(cks.length)sec("打卡奖惩",cks,"");
     body.appendChild(el("p","stnote","只保留当天记录，每天凌晨 4 点换日，过了就自动清掉。"));
     sh.appendChild(body)}
-  function stEsc(e){if(e.key==="Escape")closeSettle()}
+  function stEsc(e){if(e.key==="Escape"&&$("ov").hidden)closeSettle()}
   function closeSettle(){$("st").hidden=true;stOpen=false;document.removeEventListener("keydown",stEsc);$("st").onclick=null}
-  $("stBtn").onclick=function(){showSettle();$("st").hidden=false;stOpen=true;document.addEventListener("keydown",stEsc);$("st").onclick=function(e){if(e.target===$("st"))closeSettle()}};
+  $("stBtn").onclick=function(){ckMg=false;showSettle();$("st").hidden=false;stOpen=true;document.addEventListener("keydown",stEsc);$("st").onclick=function(e){if(e.target===$("st"))closeSettle()}};
   var bt;
   function bkJSON(){return JSON.stringify({app:"todo-game",v:1,exported:new Date().toISOString(),data:S})}
   function bkParse(txt){
@@ -690,6 +742,8 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
       if(!d.xp||typeof d.xp!=="object")d.xp={};
       if(!Array.isArray(d.pen))d.pen=[];d.pen=d.pen.filter(function(t){return t&&typeof t.text==="string"});d.pen.forEach(normPen);
       if(!Array.isArray(d.log))d.log=[];d.log=d.log.filter(function(e){return e&&typeof e.ts==="number"&&typeof e.d==="number"&&typeof e.n==="string"});
+      if(!Array.isArray(d.checks))d.checks=[];var ci=0;d.checks=d.checks.filter(function(c){return c&&typeof c.name==="string"}).map(function(c){return{id:Date.now()+(ci++),name:c.name.slice(0,30),win:Math.max(0,Math.floor(+c.win)||0),lose:Math.max(0,Math.floor(+c.lose)||0),pt:typeof c.pt==="string"?c.pt.slice(0,60):""}});
+      if(!d.ck||typeof d.ck!=="object"||!d.ck.r)d.ck={day:"",r:{}};
       return d}catch(e){return null}}
   function stamp(){var d=new Date();function z(n){return n<10?"0"+n:""+n}return d.getFullYear()+z(d.getMonth()+1)+z(d.getDate())+"-"+z(d.getHours())+z(d.getMinutes())}
   $("bkExpF").onclick=function(){
@@ -726,7 +780,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   var rt;
   $("reset").onclick=function(){var b=$("reset");
     if(b.dataset.arm){clearTimeout(rt);delete b.dataset.arm;b.textContent="清空所有数据";
-      S={tasks:[],wishes:[],bal:0,xp:{},pen:[],log:[]};save();render();toast("已清空")}
+      S={tasks:[],wishes:[],bal:0,xp:{},pen:[],log:[],checks:[],ck:{day:"",r:{}}};save();render();toast("已清空")}
     else{b.dataset.arm="1";b.textContent="再点一次确认清空";
       rt=setTimeout(function(){delete b.dataset.arm;b.textContent="清空所有数据"},3000)}
   };
