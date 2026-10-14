@@ -20,6 +20,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E6E6FA;--card:#fbfaff;--ink:#2b2352;--mute:#5f5a8a;--line:#cdc6ee;--accent:#6A5ACD;--accent-ink:#fff;--plum:#DDA0DD;--neg:#d63a58;--gold:#f59e0b;--gold-bg:#fff1c2;--goldtext:#7a4a00;--xp:#1fb87f;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -52,18 +62,8 @@ li.tk{flex-wrap:wrap}
 li.q1{box-shadow:inset 4px 0 0 #3DDC97}
 li.q2{box-shadow:inset 4px 0 0 #6A5ACD}
 li.q3{box-shadow:inset 4px 0 0 #FF6B8A}
-.wbox{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:14px;box-shadow:0 3px 0 var(--line)}
-.whead{width:100%;display:grid;grid-template-columns:1fr auto;gap:6px 8px;align-items:center;text-align:left;background:transparent;border:0;font:inherit;color:var(--ink);cursor:pointer;padding:2px 0}
-.wtitle{font-weight:700;font-size:16px}
-.chev{color:var(--mute);transition:transform .2s}
-.whead[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.wsum{grid-column:1/-1;font-size:14px;color:var(--ink)}
-.wsum .bar{margin-top:6px}
-#wBody{margin-top:12px}
-#wBody[hidden]{display:none}
 .wname{display:flex;gap:8px;flex:1 1 100%}
 .wname input{flex:1 1 auto}
-@media (prefers-reduced-motion:reduce){.chev{transition:none}}
 .drag{flex:none;border:0;background:transparent;color:var(--mute);cursor:grab;font-size:16px;line-height:1;letter-spacing:-3px;padding:6px 4px 6px 2px;touch-action:none;user-select:none;-webkit-user-select:none;border-radius:6px}
 .drag:active{cursor:grabbing}
 .sub .drag{font-size:13px;padding:4px 2px}
@@ -77,6 +77,23 @@ li.q3{box-shadow:inset 4px 0 0 #FF6B8A}
 .hint{font-style:normal;font-size:12px;color:var(--mute)}
 .edrow{display:flex;gap:8px;justify-content:flex-end}
 .stbtn{margin-left:auto;align-self:center;font:inherit;font-size:13px;font-weight:700;border:0;border-radius:999px;padding:7px 13px;background:#DDA0DD;color:#3b1f5c;cursor:pointer}
+.wopen{width:100%;display:grid;grid-template-columns:1fr auto;gap:6px 8px;align-items:center;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:14px;box-shadow:0 3px 0 var(--line);font:inherit;color:var(--ink);cursor:pointer}
+.wtitle{font-weight:700;font-size:16px}
+.chev{color:var(--mute);font-size:20px;line-height:1}
+.wsum{grid-column:1/-1;font-size:14px;color:var(--ink)}
+.sthead.stick{position:sticky;top:-18px;background:var(--card);padding:18px 0 8px;margin:-18px 0 0;z-index:2}
+#wvSheet{max-height:92vh;min-height:55vh}
+.gname{font-size:17px;font-weight:700}
+.gbig{font-size:32px;font-weight:800;line-height:1.1}
+.gbig small{font-size:13px;font-weight:600;color:var(--mute);margin-left:6px}
+.gline{font-size:14px;color:var(--mute)}
+.gban{padding:10px 12px;border-radius:12px;font-size:15px;font-weight:600}
+.gban.ok{background:var(--gold-bg);color:var(--goldtext)}
+.gban.bad{background:var(--bg);color:var(--mute)}
+.grec{display:flex;gap:8px}.grec input{flex:1}
+.ghist{font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:4px}
+.gbtns{display:flex;gap:8px;flex-wrap:wrap}
+#gvSheet{max-height:92vh}
 .sthead{display:flex;align-items:center;gap:8px}
 .sthead h3{flex:1;margin:0;font-size:18px}
 .sthead .ghost{padding:6px 12px}
@@ -177,7 +194,7 @@ h2{font-size:15px;font-weight:600;color:var(--mute);margin:20px 0 8px}
 #toast.on{opacity:1}
 .fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:15;font:inherit;font-weight:700;font-size:15px;border:0;border-radius:999px;padding:12px 18px;background:var(--accent);color:var(--accent-ink);box-shadow:0 4px 14px rgba(42,33,82,.3);cursor:pointer}
 .fab[aria-pressed=true]{background:var(--plum);color:#3b1f5c}
-body:not(.editing) :is(.edit,.del,.drag){display:none}
+body:not(.editing) :is(.edit,.del,.drag,.needEdit){display:none}
 .pw{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--mute)}
 .pbar{flex:1;min-width:70px;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
 .pbar i{display:block;height:100%;background:var(--xp);border-radius:99px;transition:width .3s}
@@ -196,30 +213,11 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   <div class="hero">
     <div class="top"><span class="coin big" aria-hidden="true"></span><b id="bal">0</b><span>愿望金币</span><button class="stbtn" id="stBtn" type="button">每日结算</button></div>
   </div>
-  <section id="wishBox" class="wbox">
-    <button type="button" id="wToggle" class="whead" aria-expanded="false" aria-controls="wBody">
-      <span class="wtitle">🎁 心愿单</span><span class="chev" aria-hidden="true">▾</span>
-      <span id="wSum" class="wsum"></span>
-    </button>
-    <div id="wBody" hidden>
-      <div class="add">
-        <div class="wname">
-          <input type="text" id="wIn" placeholder="想要什么奖励" aria-label="心愿名称" maxlength="80" autocomplete="off">
-        </div>
-        <div class="chips" role="radiogroup" aria-label="兑换方式">
-          <label><input type="radio" name="wrep" value="once" checked><span>兑换一次</span></label>
-          <label><input type="radio" name="wrep" value="rep"><span>固定（可多次兑换）</span></label>
-        </div>
-        <select id="wCat" aria-label="心愿分类"></select>
-        <input type="number" id="wCost" placeholder="所需金币" min="1" max="99999" aria-label="所需金币">
-        <button id="wAdd">添加</button>
-      </div>
-      <div id="wList"></div>
-      <h2 id="gotH">已兑换</h2>
-      <ul id="gList"></ul>
-      <div class="foot" id="gFoot"><button id="gClear">清空已兑换</button></div>
-    </div>
-  </section>
+  <button type="button" id="gOpen" class="wopen" aria-haspopup="dialog"></button>
+  <button type="button" id="wOpen" class="wopen" aria-haspopup="dialog">
+    <span class="wtitle" id="wOpenT">🎁 心愿单</span><span class="chev" aria-hidden="true">›</span>
+    <span id="wSum" class="wsum"></span>
+  </button>
   <div class="tabs" id="tabs">
     <button data-v="habit" aria-pressed="true">日常习惯</button>
     <button data-v="quest" aria-pressed="false">任务挑战</button>
@@ -241,7 +239,8 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
         <label><input type="radio" name="period" value="month"><span>月</span></label>
         <label><input type="radio" name="period" value="year"><span>年</span></label>
       </div>
-      <input type="number" id="tMax" min="1" max="99" placeholder="周期内最多完成几次（默认 1，每次都得金币）" aria-label="周期内最多完成次数" hidden>
+      <input type="number" id="tMax" min="1" max="99" placeholder="周期内最多能拿几次奖励（默认 1）" aria-label="周期内最多得奖次数" hidden>
+      <div class="chips" id="gRow" hidden><label><input type="checkbox" id="tGoal"><span id="tGoalL">🎯 关联当前关键目标</span></label></div>
       <select id="tPts" aria-label="完成后获得的愿望金币"></select>
       <button id="tAdd">添加</button>
     </div>
@@ -284,6 +283,29 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
 <button class="fab" id="editBtn" type="button" aria-pressed="false">✎ 编辑</button>
 <div id="toast" role="status"></div>
 <div id="st" class="ov" hidden><div class="sheet" role="dialog" aria-modal="true" aria-label="每日结算" id="stSheet"></div></div>
+<div id="gv" class="ov" hidden><div class="sheet" role="dialog" aria-modal="true" aria-label="当前关键目标" id="gvSheet"></div></div>
+<div id="wv" class="ov" hidden><div class="sheet" role="dialog" aria-modal="true" aria-label="心愿单" id="wvSheet">
+  <div class="sthead stick"><h3 id="wvT">🎁 心愿单</h3><button class="ghost" id="wEdit" type="button">✎ 编辑</button><button class="ghost" id="wClose" type="button">关闭</button></div>
+  <div id="wishes">
+      <div class="add">
+        <div class="wname">
+          <input type="text" id="wIn" placeholder="想要什么奖励" aria-label="心愿名称" maxlength="80" autocomplete="off">
+        </div>
+        <div class="chips" role="radiogroup" aria-label="兑换方式">
+          <label><input type="radio" name="wrep" value="once" checked><span>兑换一次</span></label>
+          <label><input type="radio" name="wrep" value="rep"><span>固定（可多次兑换）</span></label>
+        </div>
+        <select id="wCat" aria-label="心愿分类"></select>
+        <input type="number" id="wCost" placeholder="所需金币" min="1" max="99999" aria-label="所需金币">
+        <button id="wAdd">添加</button>
+      </div>
+      <div class="foot needEdit" style="justify-content:flex-start;margin:0 0 6px"><button type="button" id="catBtn">管理分类</button></div>
+      <div id="wList"></div>
+      <h2 id="gotH">已兑换</h2>
+      <ul id="gList"></ul>
+      <div class="foot" id="gFoot"><button id="gClear">清空已兑换</button></div>
+  </div>
+</div></div>
 <div id="ov" class="ov" hidden><form id="edForm" class="sheet" role="dialog" aria-modal="true"></form></div>
 <script>
 (function(){
@@ -292,7 +314,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   if(!S||!Array.isArray(S.tasks)||!Array.isArray(S.wishes)||typeof S.bal!=="number")S={tasks:[],wishes:[],bal:0,xp:{}};
   if(!S.xp||typeof S.xp!=="object")S.xp={};
   if(!Array.isArray(S.pen))S.pen=[];S.pen.forEach(normPen);
-  if(!Array.isArray(S.log))S.log=[];if(!Array.isArray(S.checks))S.checks=[];if(!S.ck||typeof S.ck!=="object"||!S.ck.r)S.ck={day:"",r:{}};if(Array.isArray(S.wishes))migW(S.wishes);pruneLog();
+  if(!Array.isArray(S.log))S.log=[];if(!Array.isArray(S.checks))S.checks=[];if(!S.goal||typeof S.goal!=="object"||typeof S.goal.name!=="string"||!isFinite(+S.goal.start)||!isFinite(+S.goal.target))S.goal=null;if(!S.ck||typeof S.ck!=="object"||!S.ck.r)S.ck={day:"",r:{}};if(Array.isArray(S.wishes))migW(S.wishes);pruneLog();
   S.tasks.forEach(norm);
   function pkey(p){var d=new Date(),y=d.getFullYear(),m=d.getMonth(),dd=d.getDate();
     function z(n){return n<10?"0"+n:""+n}
@@ -306,7 +328,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     return(d.getFullYear()===n.getFullYear()?"":d.getFullYear()+"年")+(d.getMonth()+1)+"月"+d.getDate()+"日 "+hm}
   function rollover(){var ch=false;S.tasks.forEach(function(t){
     if(isHab(t)){var k=pkey(t.period||"day");
-      if((t.done&&t.doneKey!==k)||((t.cnt||0)>0&&t.cntKey&&t.cntKey!==k)){t.done=false;t.doneKey=null;t.cnt=0;t.cntKey=null;t.ldStack=[];(t.subs||[]).forEach(function(x){x.done=false});ch=true}}});if(ch)save()}
+      if((t.done&&t.doneKey!==k)||((t.cnt||0)>0&&t.cntKey&&t.cntKey!==k)){t.done=false;t.doneKey=null;t.cnt=0;t.cntKey=null;t.ldStack=[];t.bst=[];(t.subs||[]).forEach(function(x){x.done=false});ch=true}}});if(ch)save()}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   var $=function(id){return document.getElementById(id)}, tt;
   function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},2200)}
@@ -344,22 +366,72 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   document.querySelectorAll('input[name=period]').forEach(function(r){r.onchange=syncAdd});
   syncAdd();
   var PN={day:"每日",week:"每周",month:"每月",year:"每年"}, openSub=null;
+  var DEFC=[["food","美食"],["fun","娱乐"],["shop","购物"],["rest","休息"],["other","其他"]], openWSub=null;
+  function syncCats(){var ok=Array.isArray(S.cats)&&S.cats.length&&S.cats.every(function(c){return Array.isArray(c)&&typeof c[0]==="string"&&typeof c[1]==="string"&&c[1].trim()});
+    if(!ok)S.cats=DEFC.map(function(c){return[c[0],c[1]]});
+    if(!S.cats.some(function(c){return c[0]==="other"}))S.cats.push(["other","其他"]);
+    WC.length=0;S.cats.forEach(function(c){WC.push([c[0],c[1]])});
+    S.wishes.forEach(function(w){if(!w.cat||!WC.some(function(c){return c[0]===w.cat}))w.cat="other"})}
+  function fillCats(){var sel=$("wCat"),cur=sel.value;sel.innerHTML="";WC.forEach(function(c){var o=el("option",null,c[1]);o.value=c[0];sel.appendChild(o)});if(cur&&WC.some(function(c){return c[0]===cur}))sel.value=cur}
+  function openCats(){
+    var ov=$("ov"),f=$("edForm"),work=WC.map(function(c){return[c[0],c[1]]});lastFocus=document.activeElement;
+    f.innerHTML="";f.appendChild(el("h3",null,"管理心愿分类"));
+    var list=el("div");list.style.cssText="display:flex;flex-direction:column;gap:8px";f.appendChild(list);
+    function draw(){list.innerHTML="";work.forEach(function(c,i){var r=el("div","row"),inp=el("input");inp.type="text";inp.value=c[1];inp.maxLength=8;inp.style.flex="1";inp.setAttribute("aria-label","分类名称");
+      inp.oninput=function(){c[1]=inp.value};r.appendChild(inp);
+      if(c[0]!=="other"){var d=el("button","del","×");d.type="button";d.setAttribute("aria-label","删除分类");d.onclick=function(){work.splice(i,1);draw()};r.appendChild(d)}
+      list.appendChild(r)})}
+    draw();f.appendChild(el("em","hint","删除分类后，里面的心愿会移到「其他」。"));
+    var ad=el("button","ghost","＋ 添加分类");ad.type="button";ad.style.alignSelf="flex-start";
+    ad.onclick=function(){if(work.length>=12){toast("最多 12 个分类");return}var at=work.findIndex(function(c){return c[0]==="other"});work.splice(at<0?work.length:at,0,["c"+Date.now(),""]);draw();var ins=list.querySelectorAll("input"),ni=at<0?work.length-1:at;if(ins[ni])ins[ni].focus()};
+    f.appendChild(ad);
+    var row=el("div","edrow"),cancel=el("button","ghost","取消"),ok=el("button","redeem","保存");cancel.type="button";ok.type="submit";row.append(cancel,ok);f.appendChild(row);
+    function close(){ov.hidden=true;f.onsubmit=null;ov.onclick=null;document.removeEventListener("keydown",esc);if(lastFocus&&document.contains(lastFocus))lastFocus.focus()}
+    function esc(e){if(e.key==="Escape")close()}
+    cancel.onclick=close;ov.onclick=function(e){if(e.target===ov)close()};
+    f.onsubmit=function(e){e.preventDefault();
+      for(var i=0;i<work.length;i++){work[i][1]=work[i][1].trim();if(!work[i][1]){toast("分类名称不能为空");return}}
+      S.cats=work;syncCats();fillCats();save();render();close()};
+    document.addEventListener("keydown",esc);ov.hidden=false}
+  function wGate(w){return!w.rep&&subsLeft(w)}
+  function wishSubBlock(w){
+    var subs=w.subs||[],sb=el("div","subs n"+(subs.length?"":" needEdit"));
+    if(subs.length)sb.appendChild(el("div","meta","子任务 "+subs.filter(function(x){return x.done}).length+"/"+subs.length+(subsLeft(w)?" · 做完才能兑换":"")));
+    subs.forEach(function(x){
+      var r=el("div","sub"+(x.done?" sdone":"")),k=el("button","scheck");k.type="button";k.setAttribute("aria-label",x.done?"取消子任务完成":"完成子任务");
+      k.onclick=function(){x.done=!x.done;save();render()};
+      var sx=el("button","del","×");sx.type="button";sx.setAttribute("aria-label","删除子任务");sx.onclick=function(){w.subs=w.subs.filter(function(y){return y!==x});save();render()};
+      r._s=x;
+      if(subs.length>1)r.appendChild(mkHandle(x,r,function(){return[].filter.call(sb.children,function(y){return y._s})},function(o){w.subs=o.map(function(y){return y._s});save();render()}));
+      r.append(k,el("span","stext",x.text),mkEdit("编辑子任务",function(){editSub(w,x)}),sx);sb.appendChild(r)});
+    var can=subs.length<5;
+    if(openWSub===w.id&&can){
+      var ir=el("div","subadd"),inp=el("input");inp.type="text";inp.placeholder="子任务内容";inp.maxLength=80;inp.setAttribute("aria-label","子任务内容");
+      var addSub=function(){var v=inp.value.trim();if(!v)return;w.subs=w.subs||[];if(w.subs.length>=5){toast("子任务最多 5 个");return}w.subs.push({text:v,done:false});if(w.subs.length>=5)openWSub=null;save();render()};
+      var ok=el("button","redeem","添加");ok.type="button";ok.onclick=addSub;
+      var cl=el("button","undo","收起");cl.type="button";cl.onclick=function(){openWSub=null;render()};
+      inp.addEventListener("keydown",function(e){if(e.key==="Enter")addSub();if(e.key==="Escape"){openWSub=null;render()}});
+      ir.append(inp,ok,cl);sb.appendChild(ir);setTimeout(function(){inp.focus()},0)
+    }else if(can){var ab=el("button","undo","+ 子任务");ab.type="button";ab.onclick=function(){openWSub=w.id;render()};sb.appendChild(ab)}
+    else sb.appendChild(el("div","meta","子任务最多 5 个"));
+    return sb}
   function wcName(k){for(var i=0;i<WC.length;i++)if(WC[i][0]===k)return WC[i][1];return"其他"}
-  WC.forEach(function(c){var o=el("option",null,c[1]);o.value=c[0];$("wCat").appendChild(o)});
-  $("wToggle").onclick=function(){var open=$("wBody").hidden;$("wBody").hidden=!open;this.setAttribute("aria-expanded",open?"true":"false")};
+  syncCats();fillCats();
 
   var LIM={2:3,3:1};
   function actN(t){return S.tasks.filter(function(x){var q=x.status||"todo";return x!==t&&tierOf(x)===tierOf(t)&&!x.done&&q==="doing"}).length}
   function canAct(t){return actN(t)<LIM[tierOf(t)]}
   function limMsg(t){return tierOf(t)===3?"困难挑战同时只能进行 1 个，先暂停或完成当前的":"重点任务最多同时进行 3 个，先暂停或完成一个"}
   function subsLeft(t){return(t.subs||[]).some(function(x){return!x.done})}
-  function migW(a){a.forEach(function(w){if(w&&w.emo){if(w.emo!=="🎁"&&typeof w.name==="string"&&w.name.indexOf(w.emo)!==0)w.name=w.emo+" "+w.name;delete w.emo}})}
+  function migW(a){a.forEach(function(w){if(!w)return;w.subs=Array.isArray(w.subs)?w.subs.filter(function(x){return x&&typeof x.text==="string"}).slice(0,5).map(function(x){return{text:x.text,done:!!x.done}}):[];if(w.emo){if(w.emo!=="🎁"&&typeof w.name==="string"&&w.name.indexOf(w.emo)!==0)w.name=w.emo+" "+w.name;delete w.emo}})}
   function logDay0(){var d=new Date();if(d.getHours()<4)d.setDate(d.getDate()-1);d.setHours(4,0,0,0);return d}
   function pruneLog(){var t=logDay0().getTime();S.log=(S.log||[]).filter(function(e){return e&&e.ts>=t})}
   function logAdd(k,n,d){pruneLog();S.log.push({ts:Date.now(),k:k,n:n,d:d,b:S.bal})}
-  function award(t){t.done=true;S.bal+=t.pts;logAdd("done",t.text,t.pts);toast("+"+t.pts+" 金币")}
-  function revoke(t){if(S.bal-t.pts<0){toast("这些金币已用于兑换，先撤销兑换再取消完成");return false}
-    t.done=false;S.bal-=t.pts;logAdd("undone",t.text,-t.pts);return true}
+  function award(t){var bn=goalBonus(t);t.done=true;(t.bst=t.bst||[]).push(bn);if(t.bst.length>30)t.bst.shift();
+    S.bal+=t.pts+bn;logAdd("done",t.text,t.pts+bn);toast("+"+t.pts+(bn?" +"+bn+"（目标加成）":"")+" 金币")}
+  function revoke(t){var bn=t.bst&&t.bst.length?t.bst[t.bst.length-1]:0,tot=t.pts+bn;
+    if(S.bal-tot<0){toast("这些金币已用于兑换，先撤销兑换再取消完成");return false}
+    if(t.bst&&t.bst.length)t.bst.pop();t.done=false;S.bal-=tot;logAdd("undone",t.text,-tot);return true}
 
   function mkEdit(label,fn){var b=el("button","edit","✎");b.type="button";b.setAttribute("aria-label",label);b.title=label;b.onclick=fn;return b}
   var lastFocus=null;
@@ -368,7 +440,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     fields.forEach(function(fd){
       var wrap=el("label","fld");wrap.appendChild(el("span",null,fd.label));var c;
       if(fd.type==="select"){c=el("select");fd.options.forEach(function(o){var op=el("option",null,o[1]);op.value=o[0];c.appendChild(op)});c.value=String(fd.value)}
-      else{c=el("input");c.type=fd.type;c.value=fd.value==null?"":fd.value;if(fd.max)c.maxLength=fd.max;if(fd.type==="number"){c.min=1;c.max=99999}}
+      else{c=el("input");c.type=fd.type;c.value=fd.value==null?"":fd.value;if(fd.max)c.maxLength=fd.max;if(fd.type==="number"){c.min=fd.min!=null?fd.min:1;c.max=fd.max!=null?fd.max:99999;if(fd.step)c.step=fd.step}}
       c.setAttribute("aria-label",fd.label);if(fd.disabled)c.disabled=true;wrap.appendChild(c);
       if(fd.hint)wrap.appendChild(el("em","hint",fd.hint));f.appendChild(wrap);ctrls[fd.key]=c});
     var row=el("div","edrow"),cancel=el("button","ghost","取消"),ok=el("button","redeem","保存");cancel.type="button";ok.type="submit";row.append(cancel,ok);f.appendChild(row);
@@ -383,9 +455,10 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     var f=[{key:"text",label:"内容",type:"text",value:t.text,max:120},
       {key:"pts",label:"奖励金币",type:"select",value:t.pts,options:opts.map(function(n){return[n,n+" 币"]}),disabled:t.done||(t.cnt||0)>0,hint:t.done||(t.cnt||0)>0?"已经完成过，奖励不能修改":""}];
     if(isHab(t)){f.push({key:"period",label:"周期",type:"select",value:t.period||"day",options:[["day","每日"],["week","每周"],["month","每月"],["year","每年"]]});
-      f.push({key:"max",label:"周期内最多完成次数",type:"number",value:t.max||1,hint:"仅每周 / 每月 / 每年有效，每次完成都得金币"})}
+      f.push({key:"max",label:"周期内最多得奖次数",type:"number",value:t.max||1,hint:"仅每周 / 每月 / 每年有效，每点一次完成拿一次金币，拿满后本周期不再给"})}
+    if(t.goal||(gActive()&&S.goal.mult>0))f.push({key:"goal",label:"关联当前关键目标",type:"select",value:t.goal?"1":"0",options:[["0","不关联"],["1","关联（完成额外加成）"]]});
     openEdit("编辑任务",f,function(v){var x=v.text.trim();if(!x){toast("内容不能为空");return false}
-      t.text=x;if(!t.done&&!((t.cnt||0)>0))t.pts=parseInt(v.pts,10);
+      t.text=x;if(v.goal!==undefined)t.goal=v.goal==="1";if(!t.done&&!((t.cnt||0)>0))t.pts=parseInt(v.pts,10);
       if(isHab(t)){var mm=parseInt(v.max,10);t.max=mm>0?Math.min(mm,99):1;if(v.period!==t.period)t.period=v.period;
         if((t.cnt||0)>0){t.cntKey=t.doneKey=pkey(t.period);t.done=t.cnt>=habMax(t)}}
       save();render()})}
@@ -466,9 +539,10 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
           li.appendChild(c);
         }
         var main=el("div","main");main.appendChild(el("span","text",t.text));
-        var parts=[];if(isHab(t)){var mx=habMax(t);parts.push(mx>1?PN[t.period]+"最多 "+mx+" 次":PN[t.period||"day"]);if(mx>1)parts.push(PW[t.period]+" "+Math.min(t.cnt||0,mx)+"/"+mx);parts.push(t.lastDone?"上次完成 "+fmtLast(t.lastDone):(t.done?"上次完成 未记录":"还没完成过"))}else parts.push(DN[tierOf(t)]);if(!t.done&&subsLeft(t))parts.push("需先完成子任务");
+        var parts=[];if(isHab(t)){var mx=habMax(t);parts.push(mx>1?PN[t.period]+"最多得奖 "+mx+" 次":PN[t.period||"day"]);if(mx>1)parts.push(PW[t.period]+"已得 "+Math.min(t.cnt||0,mx)+"/"+mx);parts.push(t.lastDone?"上次完成 "+fmtLast(t.lastDone):(t.done?"上次完成 未记录":"还没完成过"))}else parts.push(DN[tierOf(t)]);if(!t.done&&subsLeft(t))parts.push("需先完成子任务");
+        if(!t.done&&goalBonus(t))parts.push("🎯 目标加成 +"+goalBonus(t));
         if(parts.length)main.appendChild(el("div","meta",parts.join(" · ")));
-        if(hab&&habMax(t)>1){main.appendChild(pbar(Math.min(t.cnt||0,habMax(t)),habMax(t)));
+        if(hab&&habMax(t)>1){
           if((t.cnt||0)>0&&!t.done){var ub=el("button","undo","撤销一次");ub.style.marginTop="4px";ub.onclick=function(){if(!revoke(t))return;habUndo(t);save();render()};main.appendChild(ub)}}
         var sn=(t.subs||[]).length;if(sn)main.appendChild(pbar(t.subs.filter(function(x){return x.done}).length,sn));
         li.append(main,ptsPill("+"+t.pts));
@@ -519,7 +593,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
       });
       wl.appendChild(ul);
     }
-    $("clear").style.visibility=S.tasks.some(function(t){return inView(t)&&t.done})?"visible":"hidden";
+    $("clear").style.display=curTab==="habit"?"none":"";$("clear").style.visibility=S.tasks.some(function(t){return inView(t)&&t.done})?"visible":"hidden";
   }
 
   function normPen(t){if(/^\d{4}-\d{2}-\d{2}$/.test(String(t.due||"")))t.due+="T04:00";
@@ -571,9 +645,10 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   }
   function renderWishSum(open,lock){
     var box=$("wSum");box.innerHTML="";
-    document.querySelector("#wToggle .wtitle").textContent="🎁 心愿单"+(open.length?" · "+open.length:"");
+    var tt="🎁 心愿单"+(open.length?" · "+open.length:"");$("wOpenT").textContent=tt;$("wvT").textContent=tt;
     if(!open.length){box.textContent="还没有心愿，点开添加一个";return}
-    var aff=open.filter(function(w){return w.cost<=S.bal}).sort(function(a,b){return a.cost-b.cost});
+    var aff0=open.filter(function(w){return w.cost<=S.bal}).sort(function(a,b){return a.cost-b.cost}),aff=aff0.filter(function(w){return!wGate(w)});
+    if(!aff.length&&aff0.length){box.textContent=aff0[0].name+" · 金币够了，还差子任务没完成";return}
     if(aff.length){var w=aff[0];box.textContent=w.name+(aff.length>1?" 等 "+aff.length+" 个心愿":"")+" 可以兑换了"+(lock?"（修行未完成，暂时锁定）":"");return}
     var nx=open.slice().sort(function(a,b){return a.cost-b.cost})[0];
     box.appendChild(document.createTextNode(nx.name+" · 还差 "+(nx.cost-S.bal)+" 币"));
@@ -591,8 +666,8 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
       var ul=el("ul");
       items.forEach(function(w){
         var li=el("li","wish"),r=el("div","row");
-        var b=el("button","redeem",lock?"已锁定":"兑换");b.disabled=lock||S.bal<w.cost;
-        b.onclick=function(){if(lock||S.bal<w.cost)return;S.bal-=w.cost;logAdd("redeem",w.name,-w.cost);if(w.rep){w.times=(w.times||0)+1}else{w.got=true}save();render();toast("已兑换："+w.name+(w.rep?"（第 "+w.times+" 次）":""))};
+        var sl=wGate(w),b=el("button","redeem",lock?"已锁定":sl?"待子任务":"兑换");b.disabled=lock||sl||S.bal<w.cost;
+        b.onclick=function(){if(lock||sl||S.bal<w.cost)return;S.bal-=w.cost;logAdd("redeem",w.name,-w.cost);if(w.rep){w.times=(w.times||0)+1}else{w.got=true}save();render();toast("已兑换："+w.name+(w.rep?"（第 "+w.times+" 次）":""))};
         var d=el("button","del","×");d.setAttribute("aria-label","删除心愿");
         d.onclick=function(){S.wishes=S.wishes.filter(function(x){return x!==w});save();render()};
         r.append(el("span","text",w.name),ptsPill(w.cost),b,mkEdit("编辑心愿",function(){editWish(w)}),d);
@@ -601,6 +676,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
           if(w.times>0){var ud=el("button","undo","撤销一次");ud.onclick=function(){w.times--;S.bal+=w.cost;logAdd("unredeem",w.name,w.cost);save();render()};mr.appendChild(ud)}
           li.append(r,mr)
         }else li.append(r);
+        if(!w.rep)li.appendChild(wishSubBlock(w));
         ul.appendChild(li);
       });
       wl.appendChild(ul);
@@ -618,17 +694,18 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     var lab={habit:["日常习惯",S.tasks.filter(function(t){return isHab(t)&&!t.done}).length],quest:["任务挑战",qCount("once")+qCount("key")+qCount("hard")],pen:["自我修行",penLeft()]};
     document.querySelectorAll("#tabs button").forEach(function(b){var l=lab[b.dataset.v];if(l)b.textContent=l[0]+(l[1]?" "+l[1]:"")});
     $("bal").textContent=S.bal;
-    renderTasks();renderWishes();renderPen();schedPen();
+    renderTasks();renderWishes();renderPen();renderGoalCard();schedPen();
   }
 
   function addTask(){var v=$("tIn").value.trim();if(!v)return;
     var tr=curT,t={id:Date.now(),text:v,pts:parseInt($("tPts").value,10),tier:tr,done:false};
     if(tr===1){t.kind=curK;t.subs=[];
       if(curK==="habit"){t.period=curPeriod();var mm=parseInt($("tMax").value,10);t.max=t.period!=="day"&&mm>1?Math.min(mm,99):1;t.cnt=0;$("tMax").value=""}}
+    if($("tGoal").checked&&gActive()&&S.goal.mult>0)t.goal=true;$("tGoal").checked=false;
     S.tasks.unshift(t);$("tIn").value="";save();render();$("tIn").focus()}
   function addWish(){var v=$("wIn").value.trim(),c=parseInt($("wCost").value,10);
     if(!v)return;if(!(c>0)){toast("请填写所需金币");return}
-    S.wishes.push({id:Date.now(),name:v,cost:c,cat:$("wCat").value,got:false,rep:document.querySelector('input[name=wrep]:checked').value==="rep",times:0});$("wIn").value="";$("wCost").value="";save();render();$("wIn").focus()}
+    S.wishes.push({id:Date.now(),name:v,cost:c,cat:$("wCat").value,subs:[],got:false,rep:document.querySelector('input[name=wrep]:checked').value==="rep",times:0});$("wIn").value="";$("wCost").value="";save();render();$("wIn").focus()}
   function pMode(){return document.querySelector('input[name=pmode]:checked').value}
   function syncPen(){var due=pMode()==="due";$("pDue").hidden=!due;$("pGoal").hidden=due;
     if(due&&!$("pDue").value){var d=new Date();d.setDate(d.getDate()+1);$("pDue").value=dtv(d)}}
@@ -641,7 +718,13 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   $("pAdd").onclick=addPen;$("pIn").addEventListener("keydown",function(e){if(e.key==="Enter")addPen()});
   $("pClear").onclick=function(){var n=S.pen.filter(penOk).length;if(!n)return;
     armClear(this,"清空已完成",n,function(){S.pen=S.pen.filter(function(t){return!penOk(t)});save();render()})};
-  $("editBtn").onclick=function(){var on=!document.body.classList.contains("editing");document.body.classList.toggle("editing",on);this.setAttribute("aria-pressed",on?"true":"false");this.textContent=on?"✓ 完成编辑":"✎ 编辑"};
+  function toggleEdit(){var on=!document.body.classList.contains("editing");document.body.classList.toggle("editing",on);
+    $("editBtn").setAttribute("aria-pressed",on?"true":"false");$("editBtn").textContent=on?"✓ 完成编辑":"✎ 编辑";$("wEdit").textContent=on?"✓ 完成编辑":"✎ 编辑"}
+  $("editBtn").onclick=toggleEdit;$("wEdit").onclick=toggleEdit;
+  function wEsc(e){if(e.key==="Escape"&&$("ov").hidden)closeW()}
+  function openW(){$("wv").hidden=false;document.addEventListener("keydown",wEsc);$("wv").onclick=function(e){if(e.target===$("wv"))closeW()}}
+  function closeW(){$("wv").hidden=true;document.removeEventListener("keydown",wEsc);$("wv").onclick=null;$("wOpen").focus()}
+  $("gOpen").onclick=openG;$("wOpen").onclick=openW;$("wClose").onclick=closeW;
   syncPen();
   $("tAdd").onclick=addTask;$("wAdd").onclick=addWish;
   $("tIn").addEventListener("keydown",function(e){if(e.key==="Enter")addTask()});
@@ -650,6 +733,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     clearTimeout(b._t);delete b.dataset.arm;b.textContent=label;fn()}
   $("clear").onclick=function(){var n=S.tasks.filter(function(t){return inView(t)&&t.done}).length;if(!n)return;
     armClear(this,"清空已完成",n,function(){S.tasks=S.tasks.filter(function(t){return!(inView(t)&&t.done)});save();render()})};
+  $("catBtn").onclick=openCats;
   $("gClear").onclick=function(){var n=S.wishes.filter(function(w){return w.got}).length;if(!n)return;
     armClear(this,"清空已兑换",n,function(){S.wishes=S.wishes.filter(function(w){return!w.got});save();render()})};
   $("tabs").addEventListener("click",function(e){
@@ -664,7 +748,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   function z2(n){return n<10?"0"+n:""+n}
   function coinAmt(d){var a=el("span","am"+(d>0?" pos":d<0?" neg":""));a.appendChild(el("i","coin"));a.appendChild(document.createTextNode((d>0?"+":"")+d));return a}
   function stRow(e){
-    var r=el("div","strow"),dt=new Date(e.ts),nm=el("span","nm",e.n),tag={undone:"撤销完成",unredeem:"撤销兑换",pen:"修行完成",penundo:"取消修行完成",ckok:"达成",ckno:"未达成",ckundo:"撤回打卡"}[e.k];
+    var r=el("div","strow"),dt=new Date(e.ts),nm=el("span","nm",e.n),tag={undone:"撤销完成",unredeem:"撤销兑换",pen:"修行完成",penundo:"取消修行完成",ckok:"达成",ckno:"未达成",ckundo:"撤回打卡",goal:"目标达成",goalundo:"撤销达成"}[e.k];
     if(tag)nm.appendChild(el("em",null,tag));
     r.append(el("span","tm",z2(dt.getHours())+":"+z2(dt.getMinutes())),nm);
     if(e.d!==0)r.appendChild(coinAmt(e.d));else r.appendChild(el("span","am",e.k==="pen"||e.k==="penundo"||e.k==="ckok"||e.k==="ckno"||e.k==="ckundo"?"无金币":"0"));
@@ -726,9 +810,93 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
     function sec(title,list,none){body.appendChild(el("p","stsec",title+(list.length?" · "+list.length:"")));
       var box=el("div");if(!list.length)box.appendChild(el("p","stnote",none));list.forEach(function(e){box.appendChild(stRow(e))});body.appendChild(box)}
     sec("完成的任务",tasks,"今天还没有完成任务");sec("兑换的心愿",wishes,"今天还没有兑换心愿");
-    var cks=ents.filter(function(e){return e.k==="ckok"||e.k==="ckno"||e.k==="ckundo"});if(cks.length)sec("打卡奖惩",cks,"");
+    var cks=ents.filter(function(e){return e.k==="ckok"||e.k==="ckno"||e.k==="ckundo"||e.k==="goal"||e.k==="goalundo"});if(cks.length)sec("打卡与目标",cks,"");
     body.appendChild(el("p","stnote","只保留当天记录，每天凌晨 4 点换日，过了就自动清掉。"));
     sh.appendChild(body)}
+  function fmtN(n){return String(Math.round(n*100)/100)}
+  function gDue(g){var q=String(g.due||"").split("-");return new Date(+q[0],+q[1]-1,+q[2],23,59,59,999).getTime()}
+  function gExpired(g){return!!g&&!g.done&&Date.now()>gDue(g)}
+  function gActive(){var g=S.goal;return!!g&&!g.done&&Date.now()<=gDue(g)}
+  function gProg(g){var d=g.target-g.start;return d?Math.max(0,Math.min(1,(g.cur-g.start)/d)):0}
+  function gDays(g){return Math.max(0,Math.ceil((gDue(g)-Date.now())/86400000))}
+  function goalBonus(t){var g=S.goal;return(t.goal&&g&&gActive()&&g.mult>0)?Math.max(1,Math.round(t.pts*g.mult)):0}
+  function todayStr(){var d=new Date();return d.getFullYear()+"-"+z2(d.getMonth()+1)+"-"+z2(d.getDate())}
+  function gbar(p){var w=el("div","pw"),b=el("div","pbar"),i=el("i");i.style.width=Math.round(p*100)+"%";b.appendChild(i);w.append(b,el("span",null,Math.round(p*100)+"%"));return w}
+  function goalCheck(){var g=S.goal;if(!g||g.done||gExpired(g))return;
+    var reached=g.target<g.start?g.cur<=g.target:g.cur>=g.target;
+    if(reached){g.done=true;g.doneTs=Date.now();S.bal+=g.bonus;logAdd("goal",g.name,g.bonus);toast("🎉 目标达成！"+(g.bonus?"+"+g.bonus+" 金币":""))}}
+  function gRecord(v){var g=S.goal;if(!g||g.done)return;if(gExpired(g)){toast("目标已过期");return}
+    if(!isFinite(v)){toast("请输入数值");return}
+    g.cur=v;(g.h=g.h||[]).push({ts:Date.now(),v:v});if(g.h.length>90)g.h.shift();goalCheck();save();render();showGoal()}
+  function gUndo(){var g=S.goal;if(!g||!g.done)return;
+    if(S.bal-g.bonus<0){toast("这些金币已用于兑换，先撤销兑换再撤销达成");return}
+    S.bal-=g.bonus;logAdd("goalundo",g.name,-g.bonus);g.done=false;delete g.doneTs;
+    if(g.h&&g.h.length)g.h.pop();g.cur=g.h&&g.h.length?g.h[g.h.length-1].v:g.start;save();render();showGoal()}
+  function editGoal(){var g=S.goal,fresh=!g||g.done||gExpired(g),d30=new Date();d30.setDate(d30.getDate()+30);
+    var b=fresh?{name:"",unit:"",start:"",target:"",due:d30.getFullYear()+"-"+z2(d30.getMonth()+1)+"-"+z2(d30.getDate()),bonus:20,mult:0.25}:g;
+    var bo=[0,5,10,20,30,50,100,200],bv=Math.max(0,Math.floor(+b.bonus)||0);if(bo.indexOf(bv)<0){bo.push(bv);bo.sort(function(a,c){return a-c})}
+    var f=[{key:"name",label:"目标名称",type:"text",value:b.name,max:30},
+      {key:"unit",label:"单位（可不填）",type:"text",value:b.unit||"",max:6},
+      {key:"start",label:"起始值",type:"number",value:b.start,min:"-99999",max:"99999",step:"any"},
+      {key:"target",label:"目标值",type:"number",value:b.target,min:"-99999",max:"99999",step:"any"},
+      {key:"due",label:"截止日期（当天结束前有效）",type:"date",value:b.due},
+      {key:"bonus",label:"达成时的额外奖励",type:"select",value:String(bv),options:bo.map(function(n){return[String(n),n?n+" 币":"没有"]})},
+      {key:"mult",label:"关联任务的奖励加成（目标期间）",type:"select",value:String(b.mult||0),options:[["0","不加成"],["0.25","+25%"],["0.5","+50%"],["1","+100%"]],hint:"给任务选「关联当前关键目标」后，完成它会多拿这个比例的金币"}];
+    openEdit(fresh?"设定当前关键目标":"编辑当前关键目标",f,function(v){
+      var n=v.name.trim(),st=parseFloat(v.start),tg=parseFloat(v.target);
+      if(!n){toast("请写目标名称");return false}
+      if(!isFinite(st)||!isFinite(tg)){toast("请填写起始值和目标值");return false}
+      if(st===tg){toast("起始值和目标值不能一样");return false}
+      if(!v.due||(fresh||v.due!==g.due)&&v.due<todayStr()){toast("截止日期不能早于今天");return false}
+      var o={name:n,unit:v.unit.trim(),start:st,target:tg,due:v.due,bonus:parseInt(v.bonus,10)||0,mult:parseFloat(v.mult)||0};
+      if(fresh){o.cur=st;o.h=[{ts:Date.now(),v:st}];o.done=false;S.goal=o;S.tasks.forEach(function(t){delete t.goal})}
+      else{Object.keys(o).forEach(function(k){g[k]=o[k]})}
+      goalCheck();save();render();showGoal()})}
+  function showGoal(){
+    var sh=$("gvSheet");sh.innerHTML="";var g=S.goal;
+    var hd=el("div","sthead stick"),cl=el("button","ghost","关闭");cl.type="button";cl.onclick=closeG;hd.append(el("h3",null,"🎯 当前关键目标"),cl);sh.appendChild(hd);
+    var body=el("div","stbody"),btn=function(txt,cls,fn){var x=el("button",cls,txt);x.type="button";x.onclick=fn;return x};
+    if(!g){
+      body.appendChild(el("p","note","设定一个现在最想达成的目标。写上期限和奖励：期限内达成有额外金币；还可以让相关任务在目标期间多拿加成，更有针对性。"));
+      body.appendChild(btn("设定目标","redeem",editGoal))}
+    else{
+      var u=g.unit||"",act=gActive();
+      body.appendChild(el("div","gname",g.name));
+      var big=el("div","gbig",fmtN(g.cur));big.appendChild(el("small",null,u+"  （起始 "+fmtN(g.start)+" → 目标 "+fmtN(g.target)+u+"）"));body.appendChild(big);
+      body.appendChild(gbar(g.done?1:gProg(g)));
+      if(g.done)body.appendChild(el("div","gban ok","🎉 已达成"+(g.bonus?"，获得 +"+g.bonus+" 金币":"")));
+      else if(!act)body.appendChild(el("div","gban bad","⌛ 已过期，没有在期限内达成"));
+      else{
+        var left=Math.abs(g.target-g.cur);
+        body.appendChild(el("div","gline","还差 "+fmtN(left)+u+" · 截止 "+g.due+"（"+(gDays(g)<=1?"今天截止":"还剩 "+gDays(g)+" 天")+"）"));
+        body.appendChild(el("div","gline","达成奖励 "+(g.bonus?"+"+g.bonus+" 币":"无")+" · 关联任务 "+(g.mult>0?"+"+Math.round(g.mult*100)+"%":"不加成")));
+        var rec=el("div","grec"),inp=el("input");inp.type="number";inp.step="any";inp.placeholder="今天的数值"+(u?"（"+u+"）":"");inp.setAttribute("aria-label","记录当前数值");
+        var go=function(){var v=parseFloat(inp.value);gRecord(v)};inp.addEventListener("keydown",function(e){if(e.key==="Enter")go()});
+        rec.append(inp,btn("记录","redeem",go));body.appendChild(rec)}
+      var hs=(g.h||[]).slice(-7).reverse();
+      if(hs.length>1){var hl=el("div","ghist");hs.forEach(function(x){var d=new Date(x.ts);hl.appendChild(el("div",null,(d.getMonth()+1)+"月"+d.getDate()+"日 "+z2(d.getHours())+":"+z2(d.getMinutes())+"　"+fmtN(x.v)+u))});body.appendChild(hl)}
+      var bs=el("div","gbtns");
+      if(!g.done&&act)bs.appendChild(btn("编辑目标","ghost",editGoal));
+      if(g.done)bs.appendChild(btn("撤销达成","ghost",gUndo));
+      if(g.done||!act)bs.appendChild(btn("设定新目标","redeem",editGoal));
+      var end=btn("结束目标","ghost",function(){
+        if(!end.dataset.arm){end.dataset.arm="1";end.textContent="再点一次确认结束";setTimeout(function(){delete end.dataset.arm;end.textContent="结束目标"},3000);return}
+        S.goal=null;S.tasks.forEach(function(t){delete t.goal});save();render();showGoal()});
+      bs.appendChild(end);body.appendChild(bs)}
+    sh.appendChild(body)}
+  function gEsc(e){if(e.key==="Escape"&&$("ov").hidden)closeG()}
+  function openG(){showGoal();$("gv").hidden=false;document.addEventListener("keydown",gEsc);$("gv").onclick=function(e){if(e.target===$("gv"))closeG()}}
+  function closeG(){$("gv").hidden=true;document.removeEventListener("keydown",gEsc);$("gv").onclick=null;$("gOpen").focus()}
+  function renderGoalCard(){
+    var bx=$("gOpen"),g=S.goal;bx.innerHTML="";var t=el("span","wtitle"),sm=el("span","wsum");
+    if(!g){t.textContent="🎯 设定当前关键目标";sm.textContent="设定期限，达成有奖励"}
+    else{var u=g.unit||"";
+      if(g.done){t.textContent="🎉 "+g.name;sm.textContent="已达成"+(g.bonus?"，获得 +"+g.bonus+" 币":"")}
+      else if(!gActive()){t.textContent="⌛ "+g.name;sm.textContent="已过期，没有在期限内达成（"+fmtN(g.cur)+u+" / "+fmtN(g.target)+u+"）"}
+      else{t.textContent="🎯 "+g.name+"　"+fmtN(g.cur)+u+" → "+fmtN(g.target)+u;sm.textContent=(gDays(g)<=1?"今天截止":"还剩 "+gDays(g)+" 天")+" · 达成 "+(g.bonus?"+"+g.bonus+" 币":"无奖励")}}
+    bx.append(t,el("span","chev","›"),sm);
+    if(g&&!g.done&&gActive()){var w=gbar(gProg(g));w.style.gridColumn="1/-1";bx.appendChild(w)}
+    var gr=$("gRow"),on=gActive()&&S.goal.mult>0;gr.hidden=!on;if(on)$("tGoalL").textContent="🎯 关联当前关键目标（完成额外 +"+Math.round(S.goal.mult*100)+"%）";else $("tGoal").checked=false}
   function stEsc(e){if(e.key==="Escape"&&$("ov").hidden)closeSettle()}
   function closeSettle(){$("st").hidden=true;stOpen=false;document.removeEventListener("keydown",stEsc);$("st").onclick=null}
   $("stBtn").onclick=function(){ckMg=false;showSettle();$("st").hidden=false;stOpen=true;document.addEventListener("keydown",stEsc);$("st").onclick=function(e){if(e.target===$("st"))closeSettle()}};
@@ -744,6 +912,10 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
       if(!Array.isArray(d.log))d.log=[];d.log=d.log.filter(function(e){return e&&typeof e.ts==="number"&&typeof e.d==="number"&&typeof e.n==="string"});
       if(!Array.isArray(d.checks))d.checks=[];var ci=0;d.checks=d.checks.filter(function(c){return c&&typeof c.name==="string"}).map(function(c){return{id:Date.now()+(ci++),name:c.name.slice(0,30),win:Math.max(0,Math.floor(+c.win)||0),lose:Math.max(0,Math.floor(+c.lose)||0),pt:typeof c.pt==="string"?c.pt.slice(0,60):""}});
       if(!d.ck||typeof d.ck!=="object"||!d.ck.r)d.ck={day:"",r:{}};
+      var gg=d.goal;if(!gg||typeof gg!=="object"||typeof gg.name!=="string"||!isFinite(+gg.start)||!isFinite(+gg.target)||!/^\d{4}-\d{2}-\d{2}$/.test(String(gg.due||"")))d.goal=null;
+      else{gg.start=+gg.start;gg.target=+gg.target;gg.cur=isFinite(+gg.cur)?+gg.cur:gg.start;gg.bonus=Math.max(0,Math.floor(+gg.bonus)||0);gg.mult=Math.max(0,+gg.mult||0);gg.unit=typeof gg.unit==="string"?gg.unit.slice(0,6):"";gg.name=gg.name.slice(0,30);gg.done=!!gg.done;
+        gg.h=Array.isArray(gg.h)?gg.h.filter(function(x){return x&&isFinite(+x.ts)&&isFinite(+x.v)}).map(function(x){return{ts:+x.ts,v:+x.v}}).slice(-90):[]}
+      if(!Array.isArray(d.cats)||!d.cats.every(function(c){return Array.isArray(c)&&typeof c[0]==="string"&&typeof c[1]==="string"}))delete d.cats;
       return d}catch(e){return null}}
   function stamp(){var d=new Date();function z(n){return n<10?"0"+n:""+n}return d.getFullYear()+z(d.getMonth()+1)+z(d.getDate())+"-"+z(d.getHours())+z(d.getMinutes())}
   $("bkExpF").onclick=function(){
@@ -761,7 +933,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
       $("bkSum").textContent="将用这份备份"+when+"覆盖当前数据：任务 "+d.tasks.length+" 个，心愿 "+d.wishes.length+" 个，修行 "+d.pen.length+" 个，金币 "+d.bal+"。";
       $("bkConfirm").hidden=false};
     r.onerror=function(){toast("读取文件失败")};r.readAsText(f);this.value=""};
-  $("bkOk").onclick=function(){if(!pend)return;S=pend;pend=null;S.tasks.forEach(norm);migW(S.wishes);pruneLog();save();render();$("bkConfirm").hidden=true;toast("已导入备份")};
+  $("bkOk").onclick=function(){if(!pend)return;S=pend;pend=null;S.tasks.forEach(norm);migW(S.wishes);pruneLog();syncCats();fillCats();save();render();$("bkConfirm").hidden=true;toast("已导入备份")};
   $("bkNo").onclick=function(){pend=null;$("bkConfirm").hidden=true};
   $("bkBtn").onclick=function(){$("bk").hidden=!$("bk").hidden};
   $("bkExp").onclick=function(){var ta=$("bkText");ta.value=bkJSON();ta.focus();ta.select();toast("已生成备份，请点「复制」并保存好")};
@@ -780,7 +952,7 @@ body:not(.editing) :is(.edit,.del,.drag){display:none}
   var rt;
   $("reset").onclick=function(){var b=$("reset");
     if(b.dataset.arm){clearTimeout(rt);delete b.dataset.arm;b.textContent="清空所有数据";
-      S={tasks:[],wishes:[],bal:0,xp:{},pen:[],log:[],checks:[],ck:{day:"",r:{}}};save();render();toast("已清空")}
+      S={tasks:[],wishes:[],bal:0,xp:{},pen:[],log:[],checks:[],ck:{day:"",r:{}},goal:null};syncCats();fillCats();save();render();toast("已清空")}
     else{b.dataset.arm="1";b.textContent="再点一次确认清空";
       rt=setTimeout(function(){delete b.dataset.arm;b.textContent="清空所有数据"},3000)}
   };
